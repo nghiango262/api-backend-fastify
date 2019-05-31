@@ -8,7 +8,10 @@ const Car = require('../models/Car')
 exports.getCars = async () => {
 	try {
 		const cars = await Car.find()
-		return cars
+		return {
+			status: true,
+			data: cars
+		}
 	} catch (err) {
 		throw boom.boomify(err)
 	}
@@ -27,8 +30,9 @@ exports.getSingleCar = async req => {
 
 // Add a new car
 exports.addCar = async req => {
+	//console.log(req.body)
 	try {
-		const car = new Car(req)
+		const car = new Car(req.body)
 		const newCar = await car.save()
 		return newCar
 	} catch (err) {

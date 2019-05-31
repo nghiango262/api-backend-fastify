@@ -8,7 +8,7 @@ const mongoose = require('mongoose')
 
 // Connect to DB
 mongoose
-	.connect('mongodb://nghia:Nghia123456@ds064649.mlab.com:64649/testt')
+	.connect('mongodb://nghia:Nghia123456@ds064649.mlab.com:64649/testt', { useNewUrlParser: true })
 	.then(() => console.log('MongoDB connected...'))
 	.catch(err => console.log(err))
 
